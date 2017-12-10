@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asciidoctor documentation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <h1 class="title">
+      Asciidoctor projects
+    </h1>
+    <p class="subtitle">
+      Discover the rich ecosystem of <strong>Asciidoctor</strong>!
+    </p>
+    <div id="languages" class="languages">
+      <ul>
+        <li v-for="language in languages">
+          <span class="tag" v-bind:style="{ color: language.color }">{{language.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div id="projects" class="project-list">
+      <div class="project-card" v-for="project in projects">
+        <project :name="project.name"></project>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+<script src="./projects.js"></script>
+</body>
+</html>

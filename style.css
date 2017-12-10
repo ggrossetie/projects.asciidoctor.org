@@ -1,0 +1,26 @@
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  padding: 1rem;
+  width: 550px;
+  flex-shrink: 1;
+}
+
+.project-card .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card .card-footer {
+  margin-top: auto;
+}
+
+.languages > ul > li {
+  display: inline-block;
+  margin: 0.2rem;
+  cursor: pointer;
+}
