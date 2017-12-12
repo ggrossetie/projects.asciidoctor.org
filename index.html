@@ -19,20 +19,64 @@
       Discover the rich ecosystem of <strong>Asciidoctor</strong>!
     </p>
     <div id="languages" class="languages">
-      <ul>
-        <li v-for="language in languages">
-          <span class="tag" v-bind:style="{ color: language.color }">{{language.name}}</span>
-        </li>
-      </ul>
+      <template v-for="language in languages">
+        <input type="radio"
+               name="language"
+               value="{{language.name}}"
+               v-bind:id="'lang-' + language.name"
+               v-on:click="filterByLanguage(language.name, $event)">
+        <label v-bind:class="['lang-' + language.name, 'tag']"
+               v-bind:for="'lang-' + language.name">{{language.name}}</label>
+      </template>
+      <a id="clear-filter"
+         class="tag is-delete is-invisible"
+         v-on:click="clearFilter()">&nbsp;
+      </a>
     </div>
     <div id="projects" class="project-list">
-      <div class="project-card" v-for="project in projects">
-        <project :name="project.name"></project>
-      </div>
+      <template v-for="project in projects">
+        <div class="project-card">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{project.name}}
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {{project.description}}
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item">
+          <span>
+            <i class="fas fa-circle" v-bind:style="{ color: project.languageColor }"></i> {{project.language}}
+          </span>
+              </p>
+              <p class="card-footer-item">
+          <span>
+            <i class="fas fa-star"></i> {{project.stargazersCount}}
+          </span>
+              </p>
+              <p class="card-footer-item">
+          <span>
+            <i class="fab fa-github-alt"></i> <a v-bind:href="project.homePageURL">Source</a>
+          </span>
+              </p>
+              <p class="card-footer-item">
+          <span>
+            <i class="fas fa-book"></i> <a v-bind:href="project.documentationURL">Doc</a>
+          </span>
+              </p>
+            </footer>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
 </section>
 <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
-<script src="./projects.js"></script>
+<script src="build/projects.js"></script>
+<script src="build/init.js"></script>
 </body>
 </html>

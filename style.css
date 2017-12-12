@@ -24,3 +24,47 @@
   margin: 0.2rem;
   cursor: pointer;
 }
+
+input[type="radio"] {
+  visibility:hidden;
+  display: none;
+}
+
+input[type="radio"]+label:hover {
+  text-decoration: underline;
+}
+
+input[type="radio"]+label {
+  cursor: pointer;
+}
+
+input[type="radio"]+label.lang-Ruby {
+  color: #701516;
+}
+
+input[type="radio"]+label.lang-JavaScript {
+  color: tomato;
+}
+
+input[type="radio"]+label.lang-Java {
+  color: #b07219;
+}
+
+input[type="radio"]:checked+label.tag {
+  border: none;
+}
+
+input[type="radio"]:checked+label.lang-Ruby {
+  color: white;
+  background-color: #701516;
+}
+
+input[type="radio"]:checked+label.lang-JavaScript {
+  color: white;
+  background-color: tomato;
+}
+
+input[type="radio"]:checked+label.lang-Java {
+  color: white;
+  background-color: #b07219;
+}
