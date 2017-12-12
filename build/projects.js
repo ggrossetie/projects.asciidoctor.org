@@ -9,11 +9,17 @@ var projectsVue = new Vue({
 var languagesVue = new Vue({
   el: '#languages',
   data: {
-    languages: []
+    languages: [],
+    selectedLanguage: ''
+  },
+  computed: {
+    isFilterActive: function () {
+      return this.selectedLanguage !== '';
+    }
   },
   methods: {
     filterByLanguage: function (language) {
-      document.getElementById('clear-filter').classList.remove('is-invisible');
+      this.selectedLanguage = language;
       projectsVue.projects = projectsVue.projectsPristine.filter(function (project) {
         return project.language === language;
       });
@@ -24,7 +30,7 @@ var languagesVue = new Vue({
       for (var i = 0; i < languageEl.length; i++) {
         languageEl[i].checked = false;
       }
-      document.getElementById('clear-filter').classList.add('is-invisible');
+      this.selectedLanguage = '';
       projectsVue.projects = projectsVue.projectsPristine;
     }
   }

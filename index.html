@@ -29,7 +29,7 @@
                v-bind:for="'lang-' + language.name">{{language.name}}</label>
       </template>
       <a id="clear-filter"
-         class="tag is-delete is-invisible"
+         v-bind:class="['tag', 'is-delete', {'is-invisible': !isFilterActive}]"
          v-on:click="clearFilter()">&nbsp;
       </a>
     </div>
